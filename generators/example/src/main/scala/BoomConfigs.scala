@@ -10,8 +10,10 @@ import freechips.rocketchip.config.{Config}
 
 class SmallBoomConfig extends Config(
   new WithTSI ++                                            // use normal top
-  new WithNoGPIO ++                                        // no GPIO pins
+  new WithNoGPIO ++                                         // no GPIO pins
   new WithBootROM ++                                        // use testchipip bootrom
+  new freechips.rocketchip.subsystem.WithNoMMIOPort ++      // no mmio master port
+  new freechips.rocketchip.subsystem.WithNoSlavePort ++     // no mmio slave port
   new freechips.rocketchip.subsystem.WithInclusiveCache ++  // use SiFive L2 cache
   new boom.common.WithSmallBooms ++                         // 1-wide BOOM
   new boom.common.WithNBoomCores(1) ++                      // single-core
@@ -19,8 +21,10 @@ class SmallBoomConfig extends Config(
 
 class MediumBoomConfig extends Config(
   new WithTSI ++
-  new WithNoGPIO ++                                        // no GPIO pins
+  new WithNoGPIO ++
   new WithBootROM ++
+  new freechips.rocketchip.subsystem.WithNoMMIOPort ++
+  new freechips.rocketchip.subsystem.WithNoSlavePort ++
   new freechips.rocketchip.subsystem.WithInclusiveCache ++
   new boom.common.WithMediumBooms ++                        // 2-wide BOOM
   new boom.common.WithNBoomCores(1) ++
@@ -28,8 +32,10 @@ class MediumBoomConfig extends Config(
 
 class LargeBoomConfig extends Config(
   new WithTSI ++
-  new WithNoGPIO ++                                        // no GPIO pins
+  new WithNoGPIO ++
   new WithBootROM ++
+  new freechips.rocketchip.subsystem.WithNoMMIOPort ++
+  new freechips.rocketchip.subsystem.WithNoSlavePort ++
   new freechips.rocketchip.subsystem.WithInclusiveCache ++
   new boom.common.WithLargeBooms ++                         // 3-wide BOOM
   new boom.common.WithNBoomCores(1) ++
@@ -37,8 +43,10 @@ class LargeBoomConfig extends Config(
 
 class MegaBoomConfig extends Config(
   new WithTSI ++
-  new WithNoGPIO ++                                        // no GPIO pins
+  new WithNoGPIO ++
   new WithBootROM ++
+  new freechips.rocketchip.subsystem.WithNoMMIOPort ++
+  new freechips.rocketchip.subsystem.WithNoSlavePort ++
   new freechips.rocketchip.subsystem.WithInclusiveCache ++
   new boom.common.WithMegaBooms ++                          // 4-wide BOOM
   new boom.common.WithNBoomCores(1) ++
@@ -46,8 +54,10 @@ class MegaBoomConfig extends Config(
 
 class DualSmallBoomConfig extends Config(
   new WithTSI ++
-  new WithNoGPIO ++                                        // no GPIO pins
+  new WithNoGPIO ++
   new WithBootROM ++
+  new freechips.rocketchip.subsystem.WithNoMMIOPort ++
+  new freechips.rocketchip.subsystem.WithNoSlavePort ++
   new freechips.rocketchip.subsystem.WithInclusiveCache ++
   new boom.common.WithSmallBooms ++
   new boom.common.WithNBoomCores(2) ++                      // dual-core
@@ -55,8 +65,10 @@ class DualSmallBoomConfig extends Config(
 
 class SmallRV32BoomConfig extends Config(
   new WithTSI ++
-  new WithNoGPIO ++                                        // no GPIO pins
+  new WithNoGPIO ++
   new WithBootROM ++
+  new freechips.rocketchip.subsystem.WithNoMMIOPort ++
+  new freechips.rocketchip.subsystem.WithNoSlavePort ++
   new freechips.rocketchip.subsystem.WithInclusiveCache ++
   new boom.common.WithoutBoomFPU ++                        // no fp
   new boom.common.WithBoomRV32 ++                          // rv32 (32bit)
@@ -66,12 +78,12 @@ class SmallRV32BoomConfig extends Config(
 
 class HwachaLargeBoomConfig extends Config(
   new WithTSI ++
-  new WithNoGPIO ++                                        // no GPIO pins
+  new WithNoGPIO ++
   new WithBootROM ++
+  new freechips.rocketchip.subsystem.WithNoMMIOPort ++
+  new freechips.rocketchip.subsystem.WithNoSlavePort ++
   new freechips.rocketchip.subsystem.WithInclusiveCache ++
   new hwacha.DefaultHwachaConfig ++                         // use Hwacha vector accelerator
   new boom.common.WithLargeBooms ++                         // 3-wide BOOM
   new boom.common.WithNBoomCores(1) ++
   new freechips.rocketchip.system.BaseConfig)
-
-
