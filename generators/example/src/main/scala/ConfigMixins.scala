@@ -71,16 +71,8 @@ class WithDTM extends Config((site, here, up) => {
   }
 })
 
-class WithPWMTL extends Config((site, here, up) => {
-  case PWMKey => Some(PWMType(use_axi4=false))
-})
-
-class WithPWMAXI4 extends Config((site, here, up) => {
-  case PWMKey => Some(PWMType(use_axi4=true))
-})
-
-class WithGCD extends Config((site, here, up) => {
-  case GCDKey => true
+class WithGCD(useAXI4: Boolean, useBlackBox: Boolean) extends Config((site, here, up) => {
+  case GCDKey => Some(GCDParams(useAXI4 = useAXI4, useBlackBox = useBlackBox))
 })
 
 class WithBlockDeviceModel extends Config((site, here, up) => {

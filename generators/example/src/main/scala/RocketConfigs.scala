@@ -55,7 +55,7 @@ class jtagRocketConfig extends Config(
 
 // DOC include start: DmiRocket
 class dmiRocketConfig extends Config(
-  new WithDTM ++                                        // use top with dtm
+  new WithDTM ++                                           // use top with dtm
   new WithNoGPIO ++
   new WithBootROM ++
   new freechips.rocketchip.subsystem.WithNoMMIOPort ++
@@ -65,23 +65,10 @@ class dmiRocketConfig extends Config(
   new freechips.rocketchip.system.BaseConfig)
 // DOC include end: DmiRocket
 
-// DOC include start: PWMRocketConfig
-class PWMRocketConfig extends Config(
+class GCDTLBlackBoxRocketConfig extends Config(
   new WithTSI ++
   new WithNoGPIO ++
-  new WithPWMTL ++                                        // use top with tilelink-controlled PWM
-  new WithBootROM ++
-  new freechips.rocketchip.subsystem.WithNoMMIOPort ++
-  new freechips.rocketchip.subsystem.WithNoSlavePort ++
-  new freechips.rocketchip.subsystem.WithInclusiveCache ++
-  new freechips.rocketchip.subsystem.WithNBigCores(1) ++
-  new freechips.rocketchip.system.BaseConfig)
-// DOC include end: PWMRocketConfig
-
-class PWMAXI4RocketConfig extends Config(
-  new WithTSI ++
-  new WithNoGPIO ++
-  new WithPWMAXI4 ++                                    // use top with axi4-controlled PWM
+  new WithGCD(useAXI4=false, useBlackBox=true) ++          // Use GCD blackbox, connect by AXI4->Tilelink
   new WithBootROM ++
   new freechips.rocketchip.subsystem.WithNoMMIOPort ++
   new freechips.rocketchip.subsystem.WithNoSlavePort ++
@@ -89,10 +76,10 @@ class PWMAXI4RocketConfig extends Config(
   new freechips.rocketchip.subsystem.WithNBigCores(1) ++
   new freechips.rocketchip.system.BaseConfig)
 
-class GCDRocketConfig extends Config(
+class GCDAXI4RocketConfig extends Config(
   new WithTSI ++
   new WithNoGPIO ++
-  new WithGCD ++                                           // add MMIO GCD module
+  new WithGCD(useAXI4=true, useBlackBox=false) ++          // Use GCD Chisel module, connect by Tilelink
   new WithBootROM ++
   new freechips.rocketchip.subsystem.WithNoMMIOPort ++
   new freechips.rocketchip.subsystem.WithNoSlavePort ++
@@ -127,7 +114,7 @@ class BlockDeviceModelRocketConfig extends Config(
 // DOC include start: GPIORocketConfig
 class GPIORocketConfig extends Config(
   new WithTSI ++
-  new WithGPIO ++                                          // add GPIOs
+  new WithGPIO ++                                          // add GPIOs to the peripherybus
   new WithBootROM ++
   new freechips.rocketchip.subsystem.WithNoMMIOPort ++
   new freechips.rocketchip.subsystem.WithNoSlavePort ++
@@ -164,7 +151,7 @@ class GB1MemoryRocketConfig extends Config(
   new freechips.rocketchip.subsystem.WithNoMMIOPort ++
   new freechips.rocketchip.subsystem.WithNoSlavePort ++
   new freechips.rocketchip.subsystem.WithInclusiveCache ++
-  new freechips.rocketchip.subsystem.WithExtMemSize((1<<30) * 1L) ++ // use 2GB simulated external memory
+  new freechips.rocketchip.subsystem.WithExtMemSize((1<<30) * 1L) ++ // use 1GB simulated external memory
   new freechips.rocketchip.subsystem.WithNBigCores(1) ++
   new freechips.rocketchip.system.BaseConfig)
 
@@ -183,7 +170,7 @@ class Sha3RocketConfig extends Config(
 
 // DOC include start: InitZeroRocketConfig
 class InitZeroRocketConfig extends Config(
-  new WithInitZero(0x88000000L, 0x1000L) ++
+  new WithInitZero(0x88000000L, 0x1000L) ++                // add InitZero
   new WithNoGPIO ++
   new WithTSI ++
   new WithBootROM ++

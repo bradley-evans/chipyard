@@ -22,8 +22,7 @@ class Top(implicit p: Parameters) extends System
   with HasPeripheryGPIO // Optionally adds GPIO
   with CanHavePeripheryBlockDevice // Enables optionally adding the block device
   with CanHavePeripheryInitZero // Enables optionally adding the initzero example widget
-  with CanHavePeripheryGCD // Enables optionally adding the GCD tilelink widget
-  with CanHavePeripheryPWM // Enables optionally adding the PWM example port and widget
+  with CanHavePeripheryGCD // Enables optionally adding the GCD example widget
   with CanHavePeripherySerial // Enables optionally adding the TSI serial-adapter and port
 {
   override lazy val module = new TopModule(this)
@@ -32,7 +31,7 @@ class Top(implicit p: Parameters) extends System
 class TopModule[+L <: Top](l: L) extends SystemModule(l)
   with HasPeripheryGPIOModuleImp
   with CanHavePeripheryBlockDeviceModuleImp
-  with CanHavePeripheryPWMModuleImp
+  with CanHavePeripheryGCDModuleImp
   with CanHavePeripherySerialModuleImp
   with DontTouch
 
