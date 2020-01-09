@@ -5,6 +5,7 @@
 # exit script if any command fails
 set -e
 set -o pipefail
+set -x
 
 RDIR=$(pwd)
 CHIPYARD_DIR="${CHIPYARD_DIR:-$(git rev-parse --show-toplevel)}"
