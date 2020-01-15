@@ -25,9 +25,20 @@
 #   - make it so that you only change 1 param to change most or all of them!
 #   - mainly intended for quick developer setup for common flags
 #########################################################################################
-SUB_PROJECT ?= example
+SUB_PROJECT ?= thesis
 
 ifeq ($(SUB_PROJECT),example)
+	SBT_PROJECT       ?= example
+	MODEL             ?= TestHarness
+	VLOG_MODEL        ?= TestHarness
+	MODEL_PACKAGE     ?= $(SBT_PROJECT)
+	CONFIG            ?= RocketConfig
+	CONFIG_PACKAGE    ?= $(SBT_PROJECT)
+	GENERATOR_PACKAGE ?= $(SBT_PROJECT)
+	TB                ?= TestDriver
+	TOP               ?= Top
+endif
+ifeq ($(SUB_PROJECT),thesis)
 	SBT_PROJECT       ?= example
 	MODEL             ?= TestHarness
 	VLOG_MODEL        ?= TestHarness

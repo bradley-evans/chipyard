@@ -1,3 +1,9 @@
+// -------------
+// Berkeley Out of Order Machine (BOOM) Configurations
+// Set up for thesis research into basic BOOM Cores.
+// This file was set up by Bradley Evans, but is largely
+// unmodified from the original BAR example.
+// -------------
 package thesis
 
 import chisel3._
