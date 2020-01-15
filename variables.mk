@@ -39,7 +39,7 @@ ifeq ($(SUB_PROJECT),example)
 	TOP               ?= Top
 endif
 ifeq ($(SUB_PROJECT),thesis)
-	SBT_PROJECT       ?= example
+	SBT_PROJECT       ?= thesis
 	MODEL             ?= TestHarness
 	VLOG_MODEL        ?= TestHarness
 	MODEL_PACKAGE     ?= $(SBT_PROJECT)
