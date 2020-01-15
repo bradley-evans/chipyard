@@ -42,10 +42,10 @@ ifeq ($(SUB_PROJECT),thesis)
 	SBT_PROJECT       ?= thesis
 	MODEL             ?= TestHarness
 	VLOG_MODEL        ?= TestHarness
-	MODEL_PACKAGE     ?= $(SBT_PROJECT)
+	MODEL_PACKAGE     ?= freechips.rocketchip.system  # change back to SBT_PROJECT later prolly
 	CONFIG            ?= RocketConfig
-	CONFIG_PACKAGE    ?= $(SBT_PROJECT)
-	GENERATOR_PACKAGE ?= $(SBT_PROJECT)
+	CONFIG_PACKAGE    ?= freechips.rocketchip.system
+	GENERATOR_PACKAGE ?= freechips.rocketchip.system
 	TB                ?= TestDriver
 	TOP               ?= Top
 endif
