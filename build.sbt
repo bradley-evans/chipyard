@@ -123,6 +123,10 @@ lazy val example = conditionalDependsOn(project in file("generators/example"))
   .dependsOn(boom, hwacha, sifive_blocks, sifive_cache, utilities, sha3)
   .settings(commonSettings)
 
+lazy val thesis = conditionalDependsOn(project in file("generators/thesis"))
+  .dependsOn(boom, rocketchip)
+  .settings(commonSettings)
+
 lazy val tracegen = conditionalDependsOn(project in file("generators/tracegen"))
   .dependsOn(rocketchip, sifive_cache)
   .settings(commonSettings)
