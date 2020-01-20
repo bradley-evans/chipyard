@@ -29,3 +29,11 @@ class TopModule[+L <: Top](l: L) extends SystemModule(l)
   with HasPeripherySerialModuleImp
   with DontTouch
 
+// ------------------------------------
+
+class TopWithDTM(implicit p: Parameters) extends System
+{
+  override lazy val module = new TopWithDTMModule(this)
+}
+
+class TopWithDTMModule[+L <: TopWithDTM](l: L) extends SystemModule(l)
